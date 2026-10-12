@@ -8,17 +8,21 @@ total_satellite = []
 
 TITLE = "Connect the Satellite!!"
 
-i in range(10):
+for i in range(10):
 
     satellite = Actor("satellite")
     satellite.x = random.randint(0,600)
     satellite.y = random.randint(0,600)
     total_satellite.append(satellite)
+                                        
+def draw():
+    screen.clear()
+    number = 11
 
-    def draw():
-        screen.clear()
+    for  satellite in total_satellite:
         satellite.draw()
-
+        screen.draw.text(str(number),(satellite.pos[0],satellite.pos[1] + 10))
+        number +=11
    
 
 pgzrun.go()
