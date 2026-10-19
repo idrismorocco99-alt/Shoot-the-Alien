@@ -4,7 +4,9 @@ import random
 WIDTH = 600
 HEIGHT = 600
 
+line_list = []
 total_satellite = []
+next.satellite = 0
 
 TITLE = "Connect the Satellite!!"
 
@@ -13,16 +15,29 @@ for i in range(10):
     satellite = Actor("satellite")
     satellite.x = random.randint(0,600)
     satellite.y = random.randint(0,600)
-    total_satellite.append(satellite)
+    total_satellite.append(satellite)    
                                         
 def draw():
     screen.clear()
-    number = 11
+    number = 1
 
     for  satellite in total_satellite:
         satellite.draw()
         screen.draw.text(str(number),(satellite.pos[0],satellite.pos[1] + 10))
-        number +=11
+        number +=1
    
+def on_mouse_down(pos):
+    global message, r,g,b
+    if total_satellite[next.satellite].collidepoint(pos):
 
+        if next.satellite:
+
+            line_list.append((total_satellite[next.satellite -1].pos,total_satellite[next.satellite].pos))
+        next.satellite +=1
+    else:
+        line_list = []
+
+
+
+        
 pgzrun.go()
