@@ -1,0 +1,15 @@
+import pgzrun
+
+WIDTH = 600
+HIGHT = 600
+TITLE = "Quiz"
+
+marquee_box = Rect(0,0,WIDTH,100)
+
+def draw():
+    screen.draw.filled_rect(marquee_box,color = "orange")
+
+    def update():
+        pass
+    
+    pgzrun.go()
