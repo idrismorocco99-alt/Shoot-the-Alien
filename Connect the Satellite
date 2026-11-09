@@ -1,43 +1,54 @@
 import pgzrun
 import random
 
+
 WIDTH = 600
 HEIGHT = 600
 
 line_list = []
-total_satellite = []
-next.satellite = 0
+total_apple = []
+next_apple = 0
+number_apple = 10
 
-TITLE = "Connect the Satellite!!"
+TITLE = "Connect the apple!!"
 
 for i in range(10):
 
-    satellite = Actor("satellite")
-    satellite.x = random.randint(0,600)
-    satellite.y = random.randint(0,600)
-    total_satellite.append(satellite)    
+    apple = Actor("apple")
+    apple.x = random.randint(0,600)
+    apple.y = random.randint(0,600)
+    total_apple.append(apple)    
                                         
 def draw():
+
     screen.clear()
-    number = 1
+    number = 1    
 
-    for  satellite in total_satellite:
-        satellite.draw()
-        screen.draw.text(str(number),(satellite.pos[0],satellite.pos[1] + 10))
+    for  apple in total_apple:
+
+        apple.draw()
+        screen.draw.text(str(number),(apple.pos[0],(apple.pos[1] + 16.5)))
         number +=1
-   
+
+    for i in line_list:
+
+        screen.draw.line(i[0],i[1],("white"))
+
 def on_mouse_down(pos):
-    global message, r,g,b
-    if total_satellite[next.satellite].collidepoint(pos):
 
-        if next.satellite:
+    global message, r,g,b,next_apple,line_list
 
-            line_list.append((total_satellite[next.satellite -1].pos,total_satellite[next.satellite].pos))
-        next.satellite +=1
-    else:
-        line_list = []
+    if next_apple < number_apple:
 
 
 
-        
+        if total_apple[next_apple].collidepoint(pos):
+
+            if next_apple:
+
+                line_list.append((total_apple[next_apple -1].pos,total_apple[next_apple].pos))
+            next_apple +=1
+        else:
+            line_list = []
+
 pgzrun.go()
